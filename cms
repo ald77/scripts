@@ -1,0 +1,7 @@
+#! /usr/bin/env python
+
+import sys
+import subprocess
+
+for arg in range(1,len(sys.argv)):
+    subprocess.call(["ssh","-Y","ald77@cms"+sys.argv[arg]+".physics.ucsb.edu"])
