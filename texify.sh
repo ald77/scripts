@@ -13,15 +13,10 @@ texify(){
 	    if [ ! -f $pdfname ] || [ $i -nt $pdfname ]
 	    then
 		echo "Compiling $i"
-		tmp_file=mktemp
-		pdflatex --shell-escape $i 2> >(tee $tmp_file >&2)
-		if [[ $exit_code != 0 ]]
-		then
-		    cat $tmp_file >&2
-		fi
+		pdflatex --shell-escape $i 1> /dev/null
 		auxname=$(basename "$i" .tex).aux
 		logname=$(basename "$i" .tex).log
-		rm -f $tmp_file $auxname $logname
+		rm -f $auxname $logname
 	    else
 		echo "Skipping $i"
 	    fi
