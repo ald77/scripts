@@ -7,7 +7,7 @@ texify(){
     cd $1
     for i in $(ls -A)
     do
-	if [ -f $i ] && [ ${i: -4} == ".tex" ]
+	if [ -f $i ] && [ "${i: -4}" == ".tex" ]
 	then
             pdfname=$(basename "$i" .tex).pdf
 	    if [ ! -f $pdfname ] || [ $i -nt $pdfname ]
@@ -30,7 +30,7 @@ texify(){
     cd $orig_dir
 }
 
-if [ $# = 0 ]
+if [ $# == 0 ]
 then
     texify .
 else
