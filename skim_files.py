@@ -37,8 +37,12 @@ def SkimFiles(files, options):
                 event_list = lumi_dict.get(in_chain.lumiblock)
                 if event_list:
                     if type(event_list) is list:
+                        if in_chain.event in event_list:
+                            repeat = True
                         lumi_dict[in_chain.lumiblock].extend([in_chain.event])
                     else:
+                        if in_chain.event == event_list:
+                            repeat = True
                         lumi_dict[in_chain.lumiblock] = [event_list, in_chain.event]
                 else:
                     lumi_dict[in_chain.lumiblock] = [in_chain.event]
