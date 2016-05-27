@@ -26,9 +26,9 @@ def Build(build_path, enable_all):
     if os.path.isfile("CMakeCache.txt"):
         os.remove("CMakeCache.txt")
 
-    cmake_args = ["cmake","-Dall:BOOL=ON"]
+    cmake_args = ["cmake","-DCMAKE_INSTALL_PREFIX="+build_path,"-Dall:BOOL=ON"]
     if not enable_all:
-        cmake_args.extend(["-Dqt:BOOL=OFF","-Dqtgsi:BOOL=OFF","-Dr:BOOL=OFF"])
+        cmake_args.extend(["-Dqt:BOOL=OFF","-Dqtgsi:BOOL=OFF","-Dr:BOOL=OFF","-Dssl:BOOL=OFF"])
     cmake_args.extend(["/usr/local/root"])
     subprocess.call(cmake_args)
     
