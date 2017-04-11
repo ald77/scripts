@@ -49,6 +49,7 @@ def build(source_dir, build_dir):
                        "-DPYTHON_LIBRARY:PATH="+libFile(),
                        "-Droofit:BOOL=ON","-Dminuit2:BOOL=ON",
                        "-Drpath:BOOL=ON","-Dlibcxx:BOOL=ON",
+                       "-Dmathmore:BOOL=ON",
                        source_dir])
 
         subprocess.check_call(config)
